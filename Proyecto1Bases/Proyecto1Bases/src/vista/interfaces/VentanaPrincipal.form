@@ -234,6 +234,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Vani" size="14" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/vista/imagenes/exit.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cerrar Sesion"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -242,7 +245,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="350" y="10" width="-1" height="25"/>
+          <AbsoluteConstraints x="320" y="10" width="-1" height="25"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -107,6 +107,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().add(buttonResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, 40));
 
         buttonCS.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
+        buttonCS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/exit.png"))); // NOI18N
         buttonCS.setText("Cerrar Sesion");
         buttonCS.setContentAreaFilled(false);
         buttonCS.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +115,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 buttonCSActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonCS, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, 25));
+        getContentPane().add(buttonCS, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, 25));
 
         labelTabla2.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         labelTabla2.setText("Tabla 2:");
