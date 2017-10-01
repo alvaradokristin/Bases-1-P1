@@ -29,37 +29,46 @@ public class InicioSesion extends javax.swing.JFrame {
         ingresarButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         ImagenFondo = new javax.swing.JLabel();
+        Menu = new javax.swing.JMenuBar();
+        File = new javax.swing.JMenu();
+        Ayuda = new javax.swing.JMenuItem();
+        Acerca_de = new javax.swing.JMenuItem();
+        Edit = new javax.swing.JMenu();
+        Reset = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Sesion");
-        setMinimumSize(new java.awt.Dimension(551, 335));
+        setMinimumSize(new java.awt.Dimension(545, 335));
+        setPreferredSize(new java.awt.Dimension(545, 335));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuario:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contraseña:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
         usuario.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 138, -1));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 170, 150, -1));
 
         pass.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
-        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 138, -1));
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 220, 150, -1));
 
         ingresarButton.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
+        ingresarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/unlock-icon.png"))); // NOI18N
         ingresarButton.setText("Ingresar");
+        ingresarButton.setContentAreaFilled(false);
         ingresarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ingresarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(ingresarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, 23));
+        getContentPane().add(ingresarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 263, -1, 30));
 
         jLabel3.setFont(new java.awt.Font("Batang", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -67,9 +76,37 @@ public class InicioSesion extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 310, 30));
 
         ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/Tarjeta abajo 1.png"))); // NOI18N
-        getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 310));
+        getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 560, 310));
 
-        pack();
+        File.setText("File");
+
+        Ayuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        Ayuda.setText("Ayuda");
+        File.add(Ayuda);
+
+        Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Acerca_de.setText("Acerca de");
+        File.add(Acerca_de);
+
+        Menu.add(File);
+
+        Edit.setText("Edit");
+
+        Reset.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Reset.setText("Resetear casillas");
+        Reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResetActionPerformed(evt);
+            }
+        });
+        Edit.add(Reset);
+
+        Menu.add(Edit);
+
+        setJMenuBar(Menu);
+
+        setSize(new java.awt.Dimension(541, 350));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarButtonActionPerformed
@@ -89,6 +126,10 @@ public class InicioSesion extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_ingresarButtonActionPerformed
+
+    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ResetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,7 +167,13 @@ public class InicioSesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Acerca_de;
+    private javax.swing.JMenuItem Ayuda;
+    private javax.swing.JMenu Edit;
+    private javax.swing.JMenu File;
     private javax.swing.JLabel ImagenFondo;
+    private javax.swing.JMenuBar Menu;
+    private javax.swing.JMenuItem Reset;
     private javax.swing.JButton ingresarButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

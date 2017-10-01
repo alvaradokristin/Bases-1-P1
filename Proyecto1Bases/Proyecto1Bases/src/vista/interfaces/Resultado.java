@@ -114,6 +114,10 @@ public class Resultado extends javax.swing.JFrame {
         labelExpresion = new javax.swing.JLabel();
         labelTR = new javax.swing.JLabel();
         ImagenFondo = new javax.swing.JLabel();
+        Menu = new javax.swing.JMenuBar();
+        File = new javax.swing.JMenu();
+        Ayuda = new javax.swing.JMenuItem();
+        Acerca_de = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resultado");
@@ -153,11 +157,39 @@ public class Resultado extends javax.swing.JFrame {
         ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/bitmap1.png"))); // NOI18N
         getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 380));
 
-        pack();
+        File.setText("File");
+
+        Ayuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        Ayuda.setText("Ayuda");
+        File.add(Ayuda);
+
+        Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Acerca_de.setText("Acerca de");
+        Acerca_de.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Acerca_deActionPerformed(evt);
+            }
+        });
+        File.add(Acerca_de);
+
+        Menu.add(File);
+
+        setJMenuBar(Menu);
+
+        setSize(new java.awt.Dimension(522, 427));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Acerca_deActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Acerca_de;
+    private javax.swing.JMenuItem Ayuda;
+    private javax.swing.JMenu File;
     private javax.swing.JLabel ImagenFondo;
+    private javax.swing.JMenuBar Menu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelExpresion;

@@ -43,18 +43,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         checkboxCrearTabla = new javax.swing.JCheckBox();
         buttonMostrarTablas = new javax.swing.JButton();
         ImagenFondo = new javax.swing.JLabel();
+        Menu = new javax.swing.JMenuBar();
+        File = new javax.swing.JMenu();
+        Ayuda = new javax.swing.JMenuItem();
+        Acerca_de = new javax.swing.JMenuItem();
+        Edit = new javax.swing.JMenu();
+        Reset = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Interprete de Algebra Relacional");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(525, 441));
+        setMinimumSize(new java.awt.Dimension(510, 420));
+        setPreferredSize(new java.awt.Dimension(510, 420));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelOperacion.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         labelOperacion.setText("Operacion:");
-        getContentPane().add(labelOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 84, -1));
+        getContentPane().add(labelOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 84, -1));
 
         cbOperacion.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         cbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selección", "Proyección generalizada", "Unión", "Diferencia de conjuntos", "Producto cartesiano", "Intersección", "División", "Renombrar un relación y sus atributos", "Concatenación (join)", "Concatenación natural (natural join)", "Agregación", "Agrupación" }));
@@ -63,39 +70,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 cbOperacionItemStateChanged(evt);
             }
         });
-        getContentPane().add(cbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 290, 28));
+        getContentPane().add(cbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 290, 28));
 
         labelTabla1.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         labelTabla1.setText("Tabla 1:");
-        getContentPane().add(labelTabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+        getContentPane().add(labelTabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
         tfTabla1.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
-        getContentPane().add(tfTabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 188, -1));
+        getContentPane().add(tfTabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 188, -1));
 
         labelPredicado.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         labelPredicado.setText("Predicado:");
-        getContentPane().add(labelPredicado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+        getContentPane().add(labelPredicado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
 
         tfPredicado.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
-        getContentPane().add(tfPredicado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 188, -1));
+        getContentPane().add(tfPredicado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 188, -1));
 
         labelTR.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         labelTR.setText("Tabla Resultante:");
         labelTR.setEnabled(false);
-        getContentPane().add(labelTR, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+        getContentPane().add(labelTR, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         tfTablaResultante.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
         tfTablaResultante.setEnabled(false);
-        getContentPane().add(tfTablaResultante, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 155, -1));
+        getContentPane().add(tfTablaResultante, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 155, -1));
 
         buttonResultado.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
+        buttonResultado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/tick.png"))); // NOI18N
         buttonResultado.setText("Resultado");
+        buttonResultado.setContentAreaFilled(false);
         buttonResultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonResultadoActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, 30));
+        getContentPane().add(buttonResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, 40));
 
         buttonCS.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         buttonCS.setText("Cerrar Sesion");
@@ -110,11 +119,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         labelTabla2.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         labelTabla2.setText("Tabla 2:");
         labelTabla2.setEnabled(false);
-        getContentPane().add(labelTabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        getContentPane().add(labelTabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
 
         tfTabla2.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
         tfTabla2.setEnabled(false);
-        getContentPane().add(tfTabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 188, -1));
+        getContentPane().add(tfTabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 188, -1));
 
         checkboxCrearTabla.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
         checkboxCrearTabla.setText("Crear una tabla resultante");
@@ -124,21 +133,51 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 checkboxCrearTablaStateChanged(evt);
             }
         });
-        getContentPane().add(checkboxCrearTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
+        getContentPane().add(checkboxCrearTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
         buttonMostrarTablas.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
+        buttonMostrarTablas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/clipboard.png"))); // NOI18N
         buttonMostrarTablas.setText("Mostrar Tablas");
+        buttonMostrarTablas.setContentAreaFilled(false);
         buttonMostrarTablas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonMostrarTablasActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonMostrarTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, 30));
+        getContentPane().add(buttonMostrarTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, 40));
 
         ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/bitmap.png"))); // NOI18N
         getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 420));
 
-        pack();
+        File.setText("File");
+
+        Ayuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        Ayuda.setText("Ayuda");
+        File.add(Ayuda);
+
+        Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Acerca_de.setText("Acerca de");
+        Acerca_de.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Acerca_deActionPerformed(evt);
+            }
+        });
+        File.add(Acerca_de);
+
+        Menu.add(File);
+
+        Edit.setText("Edit");
+
+        Reset.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Reset.setText("Resetear casillas");
+        Edit.add(Reset);
+
+        Menu.add(Edit);
+
+        setJMenuBar(Menu);
+
+        setSize(new java.awt.Dimension(510, 468));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCSActionPerformed
@@ -194,6 +233,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonMostrarTablasActionPerformed
 
+    private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Acerca_deActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,7 +273,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Acerca_de;
+    private javax.swing.JMenuItem Ayuda;
+    private javax.swing.JMenu Edit;
+    private javax.swing.JMenu File;
     private javax.swing.JLabel ImagenFondo;
+    private javax.swing.JMenuBar Menu;
+    private javax.swing.JMenuItem Reset;
     private javax.swing.JButton buttonCS;
     private javax.swing.JButton buttonMostrarTablas;
     private javax.swing.JButton buttonResultado;
