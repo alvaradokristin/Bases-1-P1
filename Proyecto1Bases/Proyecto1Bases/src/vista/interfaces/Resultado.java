@@ -2,100 +2,92 @@ package vista.interfaces;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
+import java.util.ArrayList;
 
 /**
  * @author Kristin
  */
 public class Resultado extends javax.swing.JFrame {
     
-    ResultSet res;
-    ResultSetMetaData resMetaData;
-    //TableModel modeloDeDatos;
+    AbstractTableModel modelo;
     
     private class DataModel extends AbstractTableModel{
+        ArrayList<String> headers;
+        ArrayList<ArrayList<Object>> objetos;
+        ArrayList<String> clasesPorColumna;
+        
+        public DataModel(ResultSet res){
+            this.headers = new ArrayList<>();
+            this.objetos = new ArrayList<>();
+            this.clasesPorColumna = new ArrayList<>();
+            
+            ResultSetMetaData metaData = null;
+            
+            try{
+                metaData = res.getMetaData();
+                
+                for(int i = 1; i <= metaData.getColumnCount(); i++){
+                    headers.add(metaData.getColumnLabel(i));
+                    clasesPorColumna.add(metaData.getColumnClassName(i));
+                }
+                
+                while(res.next()){
+                    ArrayList<Object> filaDeObjetos = new ArrayList<>();
+                    
+                    for(int i = 1; i <= headers.size(); i++)
+                        filaDeObjetos.add(res.getObject(i));
+                    
+                    objetos.add(filaDeObjetos);
+                }      
+            }
+            catch(Exception e){
+                System.out.println("No se ha podido obtener los metadatos");
+            }
+            
+        }
         
         @Override
         public int getRowCount(){
-            int cont = 0;
-            try{  
-                while(res.next())
-                    cont++;
-                res.beforeFirst(); //Devuelve el cursor
-            }catch(Exception e){
-                //
-            }
-            return cont-1;
+            return objetos.size();
         }
         
-        @Override 
+        @Override
         public int getColumnCount(){
-            int count = 0;
-            try{
-                count = resMetaData.getColumnCount();
-            }catch(Exception e){
-                //
-            }
-            return count;
+           return headers.size();
         }
         
         @Override
         public Object getValueAt(int filaIndex, int columnaIndex){
+            return objetos.get(filaIndex).get(columnaIndex);
+        }
+        
+        @Override
+        public Class<?> getColumnClass(int columna){
             try{
-                int cont = 0;
-                while(res.next() && cont <= filaIndex)
-                {
-                    cont++;
-                }
-                String obj = res.getObject(columnaIndex+1).toString();
-                return obj; 
+                return Class.forName(clasesPorColumna.get(columna));
             }catch(Exception e){
-                //
+                System.out.println("No se pudo contruir la clase, porque no se ha encontrado");
             }
             return null;
         }
         
-        /*
-        @Override
-        public Class<?> getColumnClass(int columna){
-            try{
-                String clase = resMetaData.getColumnClassName(columna);
-                return Class.forName(clase);
-            }
-            catch(Exception e){
-                //
-            }
-            return null;
-        }*/
-        
         @Override
         public String getColumnName(int columna){
-            try{   
-                return resMetaData.getColumnLabel(columna+1);
-            }catch(Exception e){
-                //
-            }
-            return null;
+            return headers.get(columna);
         }
     }
     
     public Resultado(ResultSet res) throws Exception{
+        
+        this.modelo = new DataModel(res); 
+        
         initComponents();
-        this.res = res;
         
-        try{
-            this.resMetaData = res.getMetaData();
-        }
-        catch(Exception e){
-            throw e;
-        }
+        //modeloDeDatos.fireTableDataChanged();
         
-        DataModel modelo = new DataModel();
-        modelo.fireTableDataChanged();
-        tableResultante.setModel(modelo);
-        tableResultante.validate();
-        //((DataModel)tableResultante.getModel()).fireTableDataChanged();        
+        //tableResultante.updateUI();
+        //tableResultante.validate();
     }
 
     /**
@@ -114,10 +106,6 @@ public class Resultado extends javax.swing.JFrame {
         labelExpresion = new javax.swing.JLabel();
         labelTR = new javax.swing.JLabel();
         ImagenFondo = new javax.swing.JLabel();
-        Menu = new javax.swing.JMenuBar();
-        File = new javax.swing.JMenu();
-        Ayuda = new javax.swing.JMenuItem();
-        Acerca_de = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resultado");
@@ -131,17 +119,7 @@ public class Resultado extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 63, 370, 110));
 
-        tableResultante.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        tableResultante.setModel(this.modelo);
         jScrollPane2.setViewportView(tableResultante);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 470, 140));
@@ -157,39 +135,11 @@ public class Resultado extends javax.swing.JFrame {
         ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/bitmap1.png"))); // NOI18N
         getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 380));
 
-        File.setText("File");
-
-        Ayuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        Ayuda.setText("Ayuda");
-        File.add(Ayuda);
-
-        Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        Acerca_de.setText("Acerca de");
-        Acerca_de.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Acerca_deActionPerformed(evt);
-            }
-        });
-        File.add(Acerca_de);
-
-        Menu.add(File);
-
-        setJMenuBar(Menu);
-
-        setSize(new java.awt.Dimension(522, 427));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Acerca_deActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Acerca_de;
-    private javax.swing.JMenuItem Ayuda;
-    private javax.swing.JMenu File;
     private javax.swing.JLabel ImagenFondo;
-    private javax.swing.JMenuBar Menu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelExpresion;
