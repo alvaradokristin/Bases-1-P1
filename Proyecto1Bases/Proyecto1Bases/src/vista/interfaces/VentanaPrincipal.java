@@ -204,7 +204,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             res.setVisible(true);
         }catch(Exception e){
             //Crea un messageBox con mensaje de error
-            System.out.println("No se pudo realizar la operacion. \n Razon:" + e.getMessage());
+            Controller.mostrarMensaje(this, e);
         }
     }//GEN-LAST:event_buttonResultadoActionPerformed
 
@@ -232,46 +232,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void buttonMostrarTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMostrarTablasActionPerformed
         // TODO add your handling code here:
+        try{
+            Tablas ventanaTablas = new Tablas(Controller.obtenerTodaInformacion());
+            ventanaTablas.setVisible(true);
+        }catch(Exception e){
+            Controller.mostrarMensaje(this, e);
+        }
     }//GEN-LAST:event_buttonMostrarTablasActionPerformed
 
     private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Acerca_deActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPrincipal().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Acerca_de;
