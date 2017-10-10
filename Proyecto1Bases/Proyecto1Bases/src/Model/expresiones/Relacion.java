@@ -14,10 +14,6 @@ public class Relacion extends ExpresionRelacional{
         this.predicado = predicado;
     }
 
-    /*public void realizarOperacion() throws Exception{
-        //Codigo de conexion con la base de datos
-    }*/
-
     public String obtenerQuery() throws Exception{
         try{
             return procesarPredicado();
@@ -36,12 +32,19 @@ public class Relacion extends ExpresionRelacional{
     }
 
     protected void validarPredicado() throws Exception{
-        if(predicado != null){
-            //Evita inyeccion sql viendo que no hayan palabras clave de sql
-            if(predicado.matches("INSERT+|DROP+|CREATE+|DELETE+|UPDATE+|"))
-                throw new Exception("El predicado no puede contener palabras reservadas de SQL");
+        try{
+            revisarInyeccionSQL(predicado);
+        }catch(Exception e){
+            throw e;
         }
-        else
-            throw new Exception("El predicado no puede estar vacío");
+    }
+    
+    @Override
+    protected String getNombre() throws Exception{
+        try{
+            return procesarPredicado();
+        }catch(Exception e){
+            throw e;
+        }
     }
 }

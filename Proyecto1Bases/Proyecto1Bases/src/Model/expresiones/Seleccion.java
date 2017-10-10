@@ -5,22 +5,15 @@ package Model.expresiones;
  */
 
 public class Seleccion extends ExpresionRelacional{
+    private static int cont;
 
-    public Seleccion(String predicado, ExpresionRelacional relacion){
-        this.predicado = predicado;
-        this.relacion = relacion;
-        this.tablaResultante = null;
-    }
-
-    public Seleccion(String predicado, ExpresionRelacional relacion, String tablaResultante){
+    public Seleccion(String predicado, ExpresionRelacional relacion, 
+            String tablaResultante){
+        cont++;
         this.predicado = predicado;
         this.relacion = relacion;
         this.tablaResultante = tablaResultante;
     }
-
-    /*public void realizarOperacion() throws Exception{
-        //Codigo de conexion con la base de datos
-    }*/
 
     public String obtenerQuery() throws Exception{
         try{
@@ -32,11 +25,11 @@ public class Seleccion extends ExpresionRelacional{
             }
             else{
                 if(relacion instanceof Relacion)
-                    return "SELECT * INTO" + tablaResultante +
-                        "FROM " + relacion.obtenerQuery() + " " + procesarPredicado();
+                    return "SELECT * INTO " + tablaResultante +
+                        " FROM " + relacion.obtenerQuery() + " " + procesarPredicado();
                 else
-                    return "SELECT * INTO" + tablaResultante +
-                        "FROM (" + relacion.obtenerQuery() + ") " + procesarPredicado();
+                    return "SELECT * INTO " + tablaResultante +
+                        " FROM (" + relacion.obtenerQuery() + ") " + procesarPredicado();
             }
         }catch(Exception e){
             throw e;
@@ -53,21 +46,23 @@ public class Seleccion extends ExpresionRelacional{
     }
 
     protected void validarPredicado() throws Exception{
-        if(predicado != null){
-            //Evita inyeccion sql viendo que no hayan palabras clave de sql
-            if(predicado.matches("INSERT+|DROP+|CREATE+|DELETE+|UPDATE+|"))
-                throw new Exception("El predicado no puede contener palabras reservadas de SQL");
-
+        try{
+            revisarInyeccionSQL(predicado);
             //Revisa la forma general del predicado para seleccion y de haber error, se le explica al usuario la forma correcta
-            if(!predicado.matches("(([a-z]|[A-Z]|_)+ (=|<|>|>=|<=|¡=){1} ([a-z]|[A-Z]|[0-9])+)+" +
-                    "( (AND|OR|and|or) ([a-z]|[A-Z])+ (=|<|>|>=|<=|¡=){1} ([a-z]|[A-Z]|[0-9])+)*"))
+            if(!predicado.matches("([a-zA-Z0-9_]+ (=|<|>|>=|<=|¡=){1} [a-zA-Z0-9_]+)+"
+                    + "( (AND|OR|and|or) [a-zA-Z0-9_]+ (=|<|>|>=|<=|¡=){1} [a-zA-Z0-9_]+)*"))
 
                 throw new Exception("El predicado debe ser de la forma: \n" +
                 "atributo1 [>|<|=|!=|>=|<=] atributo2 \n" +
                 "Ademas pueden concatenerse predicados de la forma: \n" +
                 "predicado1 (AND|OR) predicado2");
+        }catch(Exception e){
+            throw e;
         }
-        else
-            throw new Exception("El predicado no puede estar vacío");
+    }
+    
+    @Override
+    public String getNombre(){
+        return "Sel" + String.valueOf(cont);
     }
 }
