@@ -44,11 +44,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         buttonMostrarTablas = new javax.swing.JButton();
         ImagenFondo = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
-        File = new javax.swing.JMenu();
-        Ayuda = new javax.swing.JMenuItem();
+        Opciones = new javax.swing.JMenu();
         Acerca_de = new javax.swing.JMenuItem();
-        Edit = new javax.swing.JMenu();
-        Reset = new javax.swing.JMenuItem();
+        Limpiar_casillas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Interprete de Algebra Relacional");
@@ -150,30 +148,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/bitmap.png"))); // NOI18N
         getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 420));
 
-        File.setText("File");
-
-        Ayuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        Ayuda.setText("Ayuda");
-        File.add(Ayuda);
+        Opciones.setText("Opciones");
 
         Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Acerca_de.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/info.png"))); // NOI18N
         Acerca_de.setText("Acerca de");
         Acerca_de.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Acerca_deActionPerformed(evt);
             }
         });
-        File.add(Acerca_de);
+        Opciones.add(Acerca_de);
 
-        Menu.add(File);
+        Limpiar_casillas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_MASK));
+        Limpiar_casillas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/eraser.png"))); // NOI18N
+        Limpiar_casillas.setText("Limpiar  casillas");
+        Limpiar_casillas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Limpiar_casillasActionPerformed(evt);
+            }
+        });
+        Opciones.add(Limpiar_casillas);
 
-        Edit.setText("Edit");
-
-        Reset.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        Reset.setText("Resetear casillas");
-        Edit.add(Reset);
-
-        Menu.add(Edit);
+        Menu.add(Opciones);
 
         setJMenuBar(Menu);
 
@@ -244,14 +241,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Acerca_deActionPerformed
 
+    private void Limpiar_casillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Limpiar_casillasActionPerformed
+        // TODO add your handling code here:
+        this.tfTabla1.setText("");
+        this.tfPredicado.setText("");
+        this.tfTabla2.setText("");
+        this.tfTablaResultante.setText("");
+    }//GEN-LAST:event_Limpiar_casillasActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Acerca_de;
-    private javax.swing.JMenuItem Ayuda;
-    private javax.swing.JMenu Edit;
-    private javax.swing.JMenu File;
     private javax.swing.JLabel ImagenFondo;
+    private javax.swing.JMenuItem Limpiar_casillas;
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JMenuItem Reset;
+    private javax.swing.JMenu Opciones;
     private javax.swing.JButton buttonCS;
     private javax.swing.JButton buttonMostrarTablas;
     private javax.swing.JButton buttonResultado;

@@ -22,19 +22,17 @@ public class InicioSesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        usuario = new javax.swing.JTextField();
-        pass = new javax.swing.JPasswordField();
+        labelUsuario = new javax.swing.JLabel();
+        labelContraseña = new javax.swing.JLabel();
+        tfUsuario = new javax.swing.JTextField();
+        tfPass = new javax.swing.JPasswordField();
         ingresarButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         ImagenFondo = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
-        File = new javax.swing.JMenu();
-        Ayuda = new javax.swing.JMenuItem();
+        Opciones = new javax.swing.JMenu();
         Acerca_de = new javax.swing.JMenuItem();
-        Edit = new javax.swing.JMenu();
-        Reset = new javax.swing.JMenuItem();
+        Limpiar_casillas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Sesion");
@@ -43,21 +41,21 @@ public class InicioSesion extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Usuario:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
+        labelUsuario.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
+        labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        labelUsuario.setText("Usuario:");
+        getContentPane().add(labelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Contraseña:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
+        labelContraseña.setFont(new java.awt.Font("Vani", 1, 14)); // NOI18N
+        labelContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        labelContraseña.setText("Contraseña:");
+        getContentPane().add(labelContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
-        usuario.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 170, 150, -1));
+        tfUsuario.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
+        getContentPane().add(tfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 170, 150, -1));
 
-        pass.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
-        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 220, 150, -1));
+        tfPass.setFont(new java.awt.Font("Vani", 0, 12)); // NOI18N
+        getContentPane().add(tfPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 220, 150, -1));
 
         ingresarButton.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         ingresarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/unlock-icon.png"))); // NOI18N
@@ -78,30 +76,24 @@ public class InicioSesion extends javax.swing.JFrame {
         ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/Tarjeta abajo 1.png"))); // NOI18N
         getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 560, 310));
 
-        File.setText("File");
-
-        Ayuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        Ayuda.setText("Ayuda");
-        File.add(Ayuda);
+        Opciones.setText("Opciones");
 
         Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Acerca_de.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/info.png"))); // NOI18N
         Acerca_de.setText("Acerca de");
-        File.add(Acerca_de);
+        Opciones.add(Acerca_de);
 
-        Menu.add(File);
-
-        Edit.setText("Edit");
-
-        Reset.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        Reset.setText("Resetear casillas");
-        Reset.addActionListener(new java.awt.event.ActionListener() {
+        Limpiar_casillas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        Limpiar_casillas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/eraser.png"))); // NOI18N
+        Limpiar_casillas.setText("Limpiar casillas");
+        Limpiar_casillas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ResetActionPerformed(evt);
+                Limpiar_casillasActionPerformed(evt);
             }
         });
-        Edit.add(Reset);
+        Opciones.add(Limpiar_casillas);
 
-        Menu.add(Edit);
+        Menu.add(Opciones);
 
         setJMenuBar(Menu);
 
@@ -110,8 +102,8 @@ public class InicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarButtonActionPerformed
-        String usuarioString = usuario.getText();
-        String passString = String.valueOf(pass.getPassword());
+        String usuarioString = tfUsuario.getText();
+        String passString = String.valueOf(tfPass.getPassword());
         
         try{
             Controller.inicializar(usuarioString, passString);
@@ -129,23 +121,23 @@ public class InicioSesion extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_ingresarButtonActionPerformed
 
-    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
+    private void Limpiar_casillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Limpiar_casillasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ResetActionPerformed
+        this.tfPass.setText("");
+        this.tfUsuario.setText("");
+    }//GEN-LAST:event_Limpiar_casillasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Acerca_de;
-    private javax.swing.JMenuItem Ayuda;
-    private javax.swing.JMenu Edit;
-    private javax.swing.JMenu File;
     private javax.swing.JLabel ImagenFondo;
+    private javax.swing.JMenuItem Limpiar_casillas;
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JMenuItem Reset;
+    private javax.swing.JMenu Opciones;
     private javax.swing.JButton ingresarButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField usuario;
+    private javax.swing.JLabel labelContraseña;
+    private javax.swing.JLabel labelUsuario;
+    private javax.swing.JPasswordField tfPass;
+    private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }

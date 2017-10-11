@@ -35,6 +35,9 @@ public class Resultado extends javax.swing.JFrame {
         labelExpresion = new javax.swing.JLabel();
         labelTR = new javax.swing.JLabel();
         ImagenFondo = new javax.swing.JLabel();
+        Menu = new javax.swing.JMenuBar();
+        Opciones = new javax.swing.JMenu();
+        Regersar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resultado");
@@ -64,11 +67,38 @@ public class Resultado extends javax.swing.JFrame {
         ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/bitmap1.png"))); // NOI18N
         getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 380));
 
+        Opciones.setText("Opciones");
+
+        Regersar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_MASK));
+        Regersar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/back.png"))); // NOI18N
+        Regersar.setText("Regresar");
+        Regersar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegersarActionPerformed(evt);
+            }
+        });
+        Opciones.add(Regersar);
+
+        Menu.add(Opciones);
+
+        setJMenuBar(Menu);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void RegersarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegersarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        VentanaPrincipal vp = new VentanaPrincipal();
+        vp.setVisible(true);
+    }//GEN-LAST:event_RegersarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ImagenFondo;
+    private javax.swing.JMenuBar Menu;
+    private javax.swing.JMenu Opciones;
+    private javax.swing.JMenuItem Regersar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelExpresion;

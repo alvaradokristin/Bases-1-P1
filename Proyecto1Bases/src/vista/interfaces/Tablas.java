@@ -49,8 +49,8 @@ public class Tablas extends javax.swing.JFrame {
         ImagenFondo = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         File = new javax.swing.JMenu();
-        Ayuda = new javax.swing.JMenuItem();
         Acerca_de = new javax.swing.JMenuItem();
+        Regresar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 470));
@@ -74,18 +74,10 @@ public class Tablas extends javax.swing.JFrame {
         ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/ImagenTablas.png"))); // NOI18N
         getContentPane().add(ImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 520));
 
-        File.setText("File");
-
-        Ayuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        Ayuda.setText("Ayuda");
-        Ayuda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AyudaActionPerformed(evt);
-            }
-        });
-        File.add(Ayuda);
+        File.setText("Opciones");
 
         Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Acerca_de.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/info.png"))); // NOI18N
         Acerca_de.setText("Acerca de");
         Acerca_de.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +85,16 @@ public class Tablas extends javax.swing.JFrame {
             }
         });
         File.add(Acerca_de);
+
+        Regresar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_LEFT, java.awt.event.InputEvent.ALT_MASK));
+        Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/back.png"))); // NOI18N
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarActionPerformed(evt);
+            }
+        });
+        File.add(Regresar);
 
         Menu.add(File);
 
@@ -102,20 +104,24 @@ public class Tablas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AyudaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AyudaActionPerformed
-
     private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Acerca_deActionPerformed
 
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        
+        VentanaPrincipal vp = new VentanaPrincipal();
+        vp.setVisible(true);
+    }//GEN-LAST:event_RegresarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Acerca_de;
-    private javax.swing.JMenuItem Ayuda;
     private javax.swing.JMenu File;
     private javax.swing.JLabel ImagenFondo;
     private javax.swing.JMenuBar Menu;
+    private javax.swing.JMenuItem Regresar;
     private javax.swing.JButton buttonCT;
     private javax.swing.JButton buttonET;
     private javax.swing.JTabbedPane tabbedpaneTablas;
