@@ -38,6 +38,7 @@ public class Resultado extends javax.swing.JFrame {
         Menu = new javax.swing.JMenuBar();
         Opciones = new javax.swing.JMenu();
         Regersar = new javax.swing.JMenuItem();
+        Acerca_de = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resultado");
@@ -79,6 +80,16 @@ public class Resultado extends javax.swing.JFrame {
         });
         Opciones.add(Regersar);
 
+        Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        Acerca_de.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/info.png"))); // NOI18N
+        Acerca_de.setText("Acerca de");
+        Acerca_de.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Acerca_deActionPerformed(evt);
+            }
+        });
+        Opciones.add(Acerca_de);
+
         Menu.add(Opciones);
 
         setJMenuBar(Menu);
@@ -89,12 +100,16 @@ public class Resultado extends javax.swing.JFrame {
     private void RegersarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegersarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        
-        VentanaPrincipal vp = new VentanaPrincipal();
-        vp.setVisible(true);
     }//GEN-LAST:event_RegersarActionPerformed
 
+    private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
+        // TODO add your handling code here:
+        Acerca_de AC = new Acerca_de();
+        AC.setVisible(true);
+    }//GEN-LAST:event_Acerca_deActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Acerca_de;
     private javax.swing.JLabel ImagenFondo;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JMenu Opciones;

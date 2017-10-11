@@ -106,14 +106,13 @@ public class Tablas extends javax.swing.JFrame {
 
     private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
         // TODO add your handling code here:
+        Acerca_de AC = new Acerca_de();
+        AC.setVisible(true);
     }//GEN-LAST:event_Acerca_deActionPerformed
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        
-        VentanaPrincipal vp = new VentanaPrincipal();
-        vp.setVisible(true);
     }//GEN-LAST:event_RegresarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

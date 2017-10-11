@@ -239,6 +239,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
         // TODO add your handling code here:
+        Acerca_de AC = new Acerca_de();
+        AC.setVisible(true);
     }//GEN-LAST:event_Acerca_deActionPerformed
 
     private void Limpiar_casillasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Limpiar_casillasActionPerformed

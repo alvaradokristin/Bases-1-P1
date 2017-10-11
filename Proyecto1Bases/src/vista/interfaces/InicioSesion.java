@@ -81,6 +81,11 @@ public class InicioSesion extends javax.swing.JFrame {
         Acerca_de.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         Acerca_de.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/info.png"))); // NOI18N
         Acerca_de.setText("Acerca de");
+        Acerca_de.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Acerca_deActionPerformed(evt);
+            }
+        });
         Opciones.add(Acerca_de);
 
         Limpiar_casillas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
@@ -126,6 +131,12 @@ public class InicioSesion extends javax.swing.JFrame {
         this.tfPass.setText("");
         this.tfUsuario.setText("");
     }//GEN-LAST:event_Limpiar_casillasActionPerformed
+
+    private void Acerca_deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acerca_deActionPerformed
+        // TODO add your handling code here:
+        Acerca_de AC = new Acerca_de();
+        AC.setVisible(true);
+    }//GEN-LAST:event_Acerca_deActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Acerca_de;
